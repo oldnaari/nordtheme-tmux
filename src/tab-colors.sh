@@ -11,17 +11,17 @@ update_window_color() {
   local color="default"
 
   case "$lname" in
-    *python*|*srun*) color="yellow" ;;
+    *python*|*srun*|*bash*|*zsh*) color="yellow" ;;
     *gitui*)         color="magenta" ;;
     *yazi*)          color="blue" ;;
     *claude*|*cursor*) color="red" ;;
-    *vim*|*bash*|*zsh*) color="green" ;;
+    *vim*)           color="green" ;;
   esac
 
   # Also check for nerd font symbols (case doesn't apply)
   if [ "$color" = "default" ]; then
     case "$name" in
-      **|*󰔬*|**)
+      **|*󰔬*|**|**)
         color="yellow" ;;
       *󰹑*|*󰒔*|**|**|*󱂅*|*󰞍*)
         color="magenta" ;;
@@ -29,7 +29,7 @@ update_window_color() {
         color="blue" ;;
       **|*󰭻*)
         color="red" ;;
-      **|**)
+      **)
         color="green" ;;
     esac
   fi
