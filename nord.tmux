@@ -47,6 +47,14 @@ __load() {
       tmux source-file "$_current_dir/$NORD_TMUX_STATUS_CONTENT_NO_PATCHED_FONT_FILE"
     fi
   fi
+
+  # Tab auto-coloring hooks
+  local tab_colors_script="$_current_dir/src/tab-colors.sh"
+  tmux set-hook -g window-renamed "run-shell '$tab_colors_script #{window_id}'"
+  tmux set-hook -g after-new-window "run-shell '$tab_colors_script #{window_id}'"
+  tmux set-hook -g session-window-changed "run-shell '$tab_colors_script #{window_id}'"
+  # Color all existing windows on load
+  "$tab_colors_script" all
 }
 
 __load
