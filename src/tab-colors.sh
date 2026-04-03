@@ -12,7 +12,7 @@ update_window_color() {
 
   case "$lname" in
     *python*|*srun*|*bash*|*zsh*) color="yellow" ;;
-    *gitui*)         color="magenta" ;;
+    *gitui*|*watch*|*top*|*nvidia-smi*|*squeue*) color="magenta" ;;
     *yazi*)          color="blue" ;;
     *claude*|*cursor*) color="red" ;;
     *vim*)           color="green" ;;
